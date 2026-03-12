@@ -1,0 +1,33 @@
+name: OneZone CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Project
+        run: echo "Build Successful"
+
+  build-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Build Report
+        run: echo "Build Report Generated"
+
+  deploy:
+    needs: [build, build-report]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Project
+        run: echo "Deploy Successful"
+
+      - name: Deploy Report
+        run: echo "Deployment Completed"
