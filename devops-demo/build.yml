@@ -1,4 +1,4 @@
-name: Build Report Deploy
+name: OneZone CI/CD Pipeline
 
 on:
   push:
@@ -9,23 +9,25 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Build Project
-        run: echo "Build completed"
+        run: echo "Build Successful"
 
-  report-build-status:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Report Build Status
-        run: echo "Build successful"
+      - name: Build Report
+        run: echo "Build Report Generated"
 
   deploy:
-    needs: report-build-status
+
+    needs: build
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy Project
-        run: echo "Deployment completed"
+        run: echo "Deploy Successful"
+
+      - name: Deploy Report
+        run: echo "Deployment Completed"
